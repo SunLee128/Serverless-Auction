@@ -6,11 +6,13 @@ export async function setAuctionPictureUrl (id, pictureUrl) {
   const params = {
     TableName                 : process.env.AUCTIONS_TABLE_NAME,
     Key                       : { id },
-    UpdatedExpression         : 'set pictureUrl = :pictureUrl',
+    UpdateExpression          : 'set pictureUrl = :pictureUrl',
     ExpressionAttributeValues : {
-      ':pictureUrl' : 'ALL_NEW'
-    }
+      ':pictureUrl' : pictureUrl
+    },
+    ReturnValues              : 'ALL_NEW'
   };
+
   const result = await dynamodb.update(params).promise();
   return result.Attributes;
 }
