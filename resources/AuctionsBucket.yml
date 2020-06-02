@@ -6,7 +6,7 @@ AuctionsBucket:
       Rules:
         - Id: ExpirePictures
           Status: Enabled
-          ExpirationInDays: 1 #to reduce aws fee, pictures will expire after 1 day
+          ExpirationInDays: 1
 
 AuctionsBucketPolicy:
   Type: AWS::S3::BucketPolicy
